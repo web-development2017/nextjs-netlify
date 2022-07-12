@@ -4,10 +4,9 @@ import AuthContext from "../context/authContext";
 // import Image from "next/image";
 
 export default function Navbar(){
-    const { user, login, logout } = useContext(AuthContext);
-    console.log(user);
+    const { user, login, logout, authReady } = useContext(AuthContext);
     
-    return(
+    return authReady ? (
         <div className="nav-container">
             <nav>
                 {/* <Image src="/rupee.png" /> */}
@@ -20,5 +19,8 @@ export default function Navbar(){
                 </ul>
             </nav>
         </div>
+    ) :
+    (
+        <p>Loading...</p>
     )
 }
