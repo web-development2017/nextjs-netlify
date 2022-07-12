@@ -4,7 +4,7 @@ import AuthContext from "../context/authContext";
 // import Image from "next/image";
 
 export default function Navbar(){
-    const { user, login } = useContext(AuthContext);
+    const { user, login, logout } = useContext(AuthContext);
     console.log(user);
     
     return(
@@ -15,7 +15,8 @@ export default function Navbar(){
                 <ul>
                     <li><Link href="/"><a>Home</a></Link></li>
                     <li><Link href="/guides"><a>Guides</a></Link></li>
-                    <li onClick={ login }>Login</li>
+                    {user ?  <li onClick={ logout }>Logout</li> : <li onClick={ login }>Login</li> }
+                    
                 </ul>
             </nav>
         </div>
